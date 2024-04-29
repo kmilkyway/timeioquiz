@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.20.2",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.12.0"
+    },
+    "version": "1.18.2",
+    "libraryName": "time-io-app",
+    "libraryId": "48828e7f-05b1-40a9-a1d9-bcc544ee2f6a",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "TimeIOApp",
+    "solutionShortDescription": "TimeIOApp description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

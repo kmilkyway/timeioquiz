@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "time-io-app-client-side-solution",
+    "id": "48828e7f-05b1-40a9-a1d9-bcc544ee2f6a",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "TimeIOApp description"
+      },
+      "longDescription": {
+        "default": "TimeIOApp description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "time-io-app Feature",
+        "description": "The feature that activates elements of the time-io-app solution.",
+        "id": "c84e9741-5ec9-4796-9c33-083edaa330c6",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/time-io-app.sppkg"
+  }
+}
