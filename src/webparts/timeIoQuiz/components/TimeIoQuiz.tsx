@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { PrimaryButton, Text } from '@fluentui/react';
 import PersonalQuestionsComponent from '../../../components/PersonalQuestionsComponent';
 import QuizQuestionsComponent from '../../../components/QuizQuestionsComponent';
-import { HttpClient } from '@microsoft/sp-http'; // Import SPHttpClient
+import { HttpClient } from '@microsoft/sp-http'; 
+import { WebPartContext } from '@microsoft/sp-webpart-base';
 
 interface Question {
   type: 'personal' | 'quiz';
@@ -12,7 +13,7 @@ interface Question {
   validationAPI?: string;
 }
 
-const TimeIOQuiz = ({ httpClient }: { httpClient: HttpClient }) => { // Receive SPHttpClient as prop
+const TimeIOQuiz = ({ httpClient,spcontext }: { httpClient: HttpClient, spcontext:WebPartContext }) => { // Receive SPHttpClient as prop
   const [personalAnswers, setPersonalAnswers] = useState<string[]>([]);
   const [showResponses, setShowResponses] = useState(false);
   const [showQuiz, setShowQuiz] = useState(false);
@@ -26,6 +27,8 @@ const TimeIOQuiz = ({ httpClient }: { httpClient: HttpClient }) => { // Receive 
     setShowResponses(!showResponses);
     setShowQuiz(!showQuiz);
   };
+
+  
 
   const handleSubmitQuizQuestions = (answers: string[]) => {
     // Handle submission of quiz answers here
@@ -65,15 +68,20 @@ const TimeIOQuiz = ({ httpClient }: { httpClient: HttpClient }) => { // Receive 
       columnType: 'boolean',
       validationAPI: 'https://timeapi.io/api/TimeZone/zone?timeZone=Asia/Tokyo'
     },
-    // Add more questions as needed
+   
   ];
 
   const quizQuestions = questions.filter(q => q.type === 'quiz');
   const columnTypes: string[] = questions.filter(q => q.type === 'quiz').map(q => q.columnType || '');
 
+  const userName = personalAnswers[0] && personalAnswers[1] ? `${personalAnswers[0]} ${personalAnswers[1]}` : '';
+  const email = personalAnswers[5];
+
+ 
+
   return (
     <div>
-      <h1>Questionnaire Form</h1>
+      <h1>Interactive Quiz</h1>
       {!showQuiz && !showResponses && (
         <PersonalQuestionsComponent
           personalQuestions={questions.filter(q => q.type === 'personal')}
@@ -95,7 +103,7 @@ const TimeIOQuiz = ({ httpClient }: { httpClient: HttpClient }) => { // Receive 
             </div>
           ))}
           <PrimaryButton onClick={handleToggleSections} style={{ marginTop: 10 }}>
-            Edit Personal Answers
+            Proceed to Quiz
           </PrimaryButton>
         </div>
       )}
@@ -105,7 +113,9 @@ const TimeIOQuiz = ({ httpClient }: { httpClient: HttpClient }) => { // Receive 
           quizQuestions={quizQuestions}
           columnTypes={columnTypes}
           onSubmitQuizQuestions={handleSubmitQuizQuestions}
-          spHttpClient={httpClient} // Pass SPHttpClient to QuizQuestionsComponent
+          spHttpClient={httpClient} 
+          userName={userName}
+          wpcontext={spcontext} email={email}
         />
       )}
     </div>

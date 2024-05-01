@@ -1,7 +1,11 @@
 
-
+import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { HttpClient } from "@microsoft/sp-http";
 export interface ITimeIoQuizProps {
-  description?: string;
-  httpClient: HttpClient;
+
+
+ httpClient: HttpClient;
+ spcontext: WebPartContext
+ 
+ 
 }

@@ -6,8 +6,10 @@ import TimeIoQuiz from './components/TimeIoQuiz';
 import { ITimeIoQuizProps } from './components/ITimeIoQuizProps';
 
 
+
+
 export interface ITimeIoQuizWebPartProps {
-  description?: string | undefined;
+  description: string;
 }
 
 export default class TimeIoQuizWebPart extends BaseClientSideWebPart<ITimeIoQuizWebPartProps> {
@@ -16,14 +18,18 @@ export default class TimeIoQuizWebPart extends BaseClientSideWebPart<ITimeIoQuiz
     const element: React.ReactElement<ITimeIoQuizProps> = React.createElement(
       TimeIoQuiz,
       {
-        httpClient: this.context.httpClient
+        httpClient: this.context.httpClient,
+        spcontext: this.context
+        
       }
     );
-
+   
     ReactDOM.render(element, this.domElement);
   }
 
   protected onDispose(): void {
     ReactDOM.unmountComponentAtNode(this.domElement);
   }
+
+ 
 }

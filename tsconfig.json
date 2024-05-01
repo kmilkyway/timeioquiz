@@ -2,7 +2,7 @@
   "extends": "./node_modules/@microsoft/rush-stack-compiler-4.7/includes/tsconfig-web.json",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "target": "es6",
+    "target": "es5",
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -23,8 +23,10 @@
       "webpack-env"
     ],
     "lib": [
-      "es6",
-      "dom"
+      "es2015",
+      "dom",
+      "es2015.collection",
+      "es2015.promise"
      
     ]
   },
